@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import {
   DB_DATABASE,
@@ -6,7 +7,9 @@ import {
   DB_PORT,
   DB_USER,
 } from 'src/enviroments';
+import * as entities from 'src/entity';
 
+@Injectable()
 export class TypeOrmService implements TypeOrmOptionsFactory {
   async createTypeOrmOptions() {
     const options: TypeOrmModuleOptions = {
@@ -16,7 +19,7 @@ export class TypeOrmService implements TypeOrmOptionsFactory {
       username: DB_USER,
       password: DB_PASSWORD,
       database: DB_DATABASE,
-      entities: [],
+      entities: Object.values(entities),
       synchronize: true,
     };
     return options;

@@ -7,7 +7,7 @@ import {
   DB_PORT,
   DB_USER,
 } from 'src/enviroments';
-import * as entities from 'src/entity';
+import { UserEntity } from 'src/entities/user.entity';
 
 @Injectable()
 export class TypeOrmService implements TypeOrmOptionsFactory {
@@ -19,7 +19,7 @@ export class TypeOrmService implements TypeOrmOptionsFactory {
       username: DB_USER,
       password: DB_PASSWORD,
       database: DB_DATABASE,
-      entities: Object.values(entities),
+      entities: [UserEntity],
       synchronize: true,
     };
     return options;

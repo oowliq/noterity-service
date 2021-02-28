@@ -17,3 +17,7 @@ export const DB_USER: string = process.env.DB_USER ?? 'root';
 export const DB_PASSWORD: string = process.env.DB_PASSWORD ?? 'root';
 
 export const DB_DATABASE: string = process.env.DB_DATABASE ?? 'database';
+
+export const JWT_SECRET: string = process.env.JWT_SECRET ?? 'example';
+
+export const JWT_EXPIRES_IN: string = process.env.JWT_EXPIRES_IN ?? '3600s';

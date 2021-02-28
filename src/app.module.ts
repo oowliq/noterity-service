@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmService } from './config/typeorm';
 import { GqlService } from './config/graphql';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,8 +15,8 @@ import { UsersModule } from './users/users.module';
       useClass: GqlService,
     }),
     UsersModule,
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, TypeOrmService, GqlService],
+  providers: [TypeOrmService, GqlService],
 })
 export class AppModule {}
